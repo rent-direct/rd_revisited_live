@@ -1,0 +1,82 @@
+//adds the link to individual properties - full href
+<a href="/property/view/' . $value['id'] . '">
+
+<a href="/property/view/' . $value['id'] .
+
+
+// safe way of suppling data to the view
+<? if (isset($property_data['description']) && !empty($property_data['description'])) {
+                                echo($property_data['description']);
+                            } else {
+                                echo('N/A');
+                            } ?>
+
+// quick isset
+<? if (isset($landlord_details)) { echo $landlord_details['prop_count']; } ?>
+
+// a bare isset function
+<? if (isset($email)) {
+                            echo($email);
+                        } else {
+                            echo('');
+                        } ?>
+
+
+//bootstrap line divider
+<li class="divider"></li>
+
+//use in controller to redirect to the current page
+redirect($_SERVER['HTTP_REFERER']);
+
+// useful php functions for cutting out html php tags and limit the amount of text to display:
+substr(strip_tags($value['message']), 0, 65)
+
+// ACE UK DATETIME CONVERSION!
+ <td><?= date('d/m/Y H:i:s',strtotime($value['datetime_received'])) ?></td>
+
+
+//FLASH DATA FOR SENDING DATA TO VIEW REALLY QUICK!!
+//CONTROLLER:
+// set flashdata
+ $this->session->set_flashdata('message', 'Thank you for your request, the landlord should be in touch soon!');
+ //VIEW: (THEN YOU COULD USE THE HTTP_REFER METHOD TO SEND STUFF BACK!!!
+redirect('register', 'refresh');
+  <?
+ // get flashdata
+ $message = $this->session->flashdata('message');
+
+ if ($message) {
+     echo ('<div class="alert alert-success">' . '<strong>Thank you</strong> for your request, the <strong>landlord</strong>  should be in touch soon!' . '</div><br />');
+ }
+ ?>
+
+ ////////////////////////
+
+//SQL friendly DATE INPUT:
+date('Y-m-d H:i:s');
+
+// line debugging code
+exit(print_r($this->data['viewings_data']));
+
+//make input boxes smaller:
+style="width:0px;"
+
+/////////////////////html codes////////////////////////
+don't, like'd ==== &#39
+
+//////////////////// MODAL CUSTOM PROFILE //////////////////
+  .modal-backdrop {
+                            z-index: 1;
+                        }
+                         .modal, .modal.fade.in {
+                            top: 0;   was 10%
+                            right: 0;
+                        }
+                         body .modal {
+                            width: 20%;  desired relative width
+                            left: 65%;  (100%-width)/2
+                             place center
+                            margin-left:auto;
+                            margin-right:auto;
+                            border-radius: 4px;
+                        }

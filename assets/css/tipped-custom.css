@@ -1,0 +1,32 @@
+
+
+    /* huge */
+    .tpd-size-huge .tpd-content,
+    .tpd-size-huge .tpd-title {
+        padding: 15px;
+        font-size: 13px;
+        line-height: 20px;
+        background-color: #000000;
+        border-radius: 3px;
+        font-family: "Ubuntu", Arial;
+        font-weight: bold;
+        text-transform: uppercase;
+
+    }
+    .tpd-size-huge .tpd-background { border-radius: 10px; }
+    .tpd-size-huge .tpd-stem {
+        width: 24px;
+        height: 12px;
+        margin-left: 8px; /* space from the side */
+        margin-top: 2px; /* space between stem and target */
+    }
+    .tpd-size-huge.tpd-no-radius .tpd-stem { margin-left: 10px; }
+    .tpd-size-huge .tpd-loading-icon { width: 50px; height: 50px; }
+    .tpd-size-huge .tpd-loading-line {
+        z-index: 12;        /* amount of lines */
+        margin-bottom: 5px; /* radius of the inner circle */
+        height: 5px;        /* length of a line */
+        width: 2px;         /* width of a line */
+    }
+    .tpd-size-huge .tpd-close { margin: 11px 5px 11px 5px; }
+    .tpd-size-huge .tpd-close-icon { font-size: 32px; }

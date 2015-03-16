@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="359173626">
+    <data-source source="LOCAL" name="MySQL - @mysql.us.cloudlogin.co" uuid="cc7f7b9d-5737-4158-9643-2adb93178ea5">
+      <driver-ref>mysql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://mysql.us.cloudlogin.co:3306</jdbc-url>
+      <user-name>llandric_tiktok</user-name>
+      <user-password>dfd9dfc3dfc7dfc5dfc4dfcfdf9bdf98</user-password>
+      <driver-properties>
+        <property name="zeroDateTimeBehavior" value="convertToNull" />
+        <property name="tinyInt1isBit" value="false" />
+      </driver-properties>
+      <libraries />
+    </data-source>
+  </component>
+</project>
+

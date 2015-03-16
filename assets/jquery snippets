@@ -1,0 +1,9 @@
+// this lets you select stuff and create a function out of it
+
+<script>
+    $(document).ready(function(){
+        $('a#submit_message').click(function () {
+
+        });
+    });
+</script>

@@ -1,0 +1,479 @@
+<?
+/*
+ * THIS IS THE 'MAIN' FRONT PAGE OF RENT DIRECT, EVERYTHING HERE IS THE MOST IMPORTANT
+ * PART OF THE BUSINESS, IT MUST BE KEPT AS CLEAN AS POSSIBLE WHEN IT COMES TO CODE
+ * ANY CHANGES MUST BE FIRST TALKED ABOUT BEFORE ACTUALLY DOING THEM WITH EITHER
+ * JAMES OR SENIOR CODERS, CHEERS!
+ *
+ * 13.02.15 --- TO GET THE SEARCH TABS BACK FOR COMMERCIAL, YOU NEED TO SET DATA-TOOGLE TAB
+ * REFER TO THE OLD TEMPLATES TO GATHER THE CODE BACK FOR THE SEARCH FEATURES
+ *
+ */
+?>
+
+<section id='homepage-slider'>
+    <div class='controls-wrapper'>
+        <section class='container'>
+            <section class='row'>
+                <div class='controls hidden-phone'>
+                    <a href="#" class='prev'>Previous</a>
+                    <a href="#" class='next'>Next</a>
+                </div>
+            </section>
+        </section>
+    </div>
+
+<!------------------------------------------------------ HEADLINER SECTION START ------------------------------------>
+    <section class='slider-wrapper'>
+        <div class='homepage-slider hidden-phone'>
+            <ul class='slides'>
+
+                <!--- Php code temp line start --->
+                <?
+                $page = 1;
+                $count = 1;
+
+                foreach ($headliner_properties as $key => $value) {
+                switch ($value['rent_type']) {
+                    case 1:
+                        $rent_type = "per month";
+                        break;
+                    case 2:
+                        $rent_type = "per week";
+                        break;
+                    case 3:
+                        $rent_type = "per night";
+                        break;
+                    case 4:
+                        $rent_type = "per person";
+                        break;
+                }
+                    switch ($value['sub_type_id']) {
+
+                        case 1:
+                            $prop_type = "SEMI-DETACHED";
+                            break;
+                        case 2:
+                            $prop_type = "DETACHED";
+                            break;
+                        case 3:
+                            $prop_type = "FLAT";
+                            break;
+                        case 4:
+                            $prop_type = "MAISONETTE";
+                            break;
+                        case 5:
+                            $prop_type = "BUNGALOW";
+                            break;
+                        case 6:
+                            $prop_type = "APARTMENT";
+                            break;
+                    }
+
+
+                //create a mini title for headliners
+                $miniTitle = $value['bedrooms'] . ' BED ' . $prop_type . ' IN ' . strtoupper($value['city']);
+                ?>
+                    <li>
+                            <img src="<?= base_url() ?>prop_images/headliners/<?=$value['headliner_file_name']?>" alt="" class='bg-image'/>
+                            <div class='container'>
+                                <div class='row'>
+                                    <div class='span12'>
+
+                                        <div class='description'>
+                                            <div class='left'>
+                                                <div class='title'>
+                                                    <div class='big'><a href="<?= site_url('property/view/' . $value['slug']) ?>"><?= $miniTitle ?></a></div>
+                                                    <div class='small'><?=$value['city'] ?></div>
+                                                </div>
+                                                <div class='rooms'><?= $value['bedrooms'] . ' Bedrooms + ' . $value['bathrooms'] . ' Bathrooms' ?> </div>
+                                            </div>
+                                            <div class='right'>
+                                                <div class='price'>
+                                                    <div class='number'> £<?= (int)$value['rent'] ?> </div>
+                                                    <div class='rate'> <?= $rent_type ?></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+<?
+
+                }
+                ?>
+
+
+                <!-- headliner limiter end --->
+            </ul>
+
+        </div>
+    </section>
+    <!---- END HEADLINER SECTION ----->
+
+
+</section>
+
+
+<section id='main' role='main'>
+<section class='container'>
+
+<!--- TAB SEARCH BAR ---->
+<section class='row tab-finder'>
+    <div class='span12'>
+        <div class="tabbable">
+
+            <ul class="nav nav-tabs">
+                <li class="active first-tab"><a class="tipped-tab1" href="#tab1" data-toggle="tab">Residential</a></li>
+                <li><a href="#" class="tipped-tab2">Commercial</a></li>    <? // data toggle tabs removed ?>
+                <li><a href="#" class="tipped-tab3">Property Share</a></li>
+                <li><a href="#" class="tipped-tab4">Holiday Lettings</a></li>
+                <li><a href="#" class="tipped-tab5">Council Swap</a></li>
+            </ul>
+
+            <? // JAMES: THE CSS FOR THE POP UP IS IN ASSETS/CSS/TIPPED-CUSTOM ?>
+
+            <script type="text/javascript">
+                var tab1 = "Residential Properties Now Live!";
+                var tab2 = "Commercial Properties will be available soon!";
+                var tab3 = "Property Share will be available soon!";
+                var tab4 = "Holiday Lettings will be available soon!";
+                var tab5 = "Council Swap will be available soon!";
+
+                $(document).ready(function() {
+                    Tipped.create('.tipped-tab1', tab1, { size: 'huge' });
+                    Tipped.create('.tipped-tab2', tab2, { size: 'huge' });
+                    Tipped.create('.tipped-tab3', tab3, { size: 'huge' });
+                    Tipped.create('.tipped-tab4', tab4, { size: 'huge' });
+                    Tipped.create('.tipped-tab5', tab5, { size: 'huge' });
+                });
+            </script>
+
+            <div class="tab-content">
+
+                <!--- Residential Prop Share --->
+                <div class="tab-pane active" id="tab1">
+                    <div class='inner'>
+                        <form action="<?= base_url('home/execute_search') ?>" method="post">
+
+
+                            <input type="text" name='search' id='search' class='search-string' placeholder="e.g. Flat in Manchester"/>
+
+
+
+                            <select name="search-furnished" class='span3 selectpicker search-select' id="furnished">
+                                <option>Miles</option>
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                                </select>
+
+                            <select name="search-bedrooms" class='span2 selectpicker search-select' id="bedrooms">
+                                <option>Bedrooms</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5+</option>
+                            </select>
+
+                            <select name="search-bathrooms" class='span2 selectpicker search-select' id="bathrooms">
+                                <option>Bathrooms</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+
+<!--                          -->
+<!--                            <div class='widget-section span2 search-select'>-->
+<!--                                <div class='inner'>-->
+<!--                                    <label for='range'>Slide Example</label>-->
+<!--                                    <input type="text" name='size' id='range' class='input-block-level range-example'/>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+                            <input type="text" name='search-min-price' class='span2 search-price no-margin' placeholder="Min. Rent"/>
+
+                            <span class='line-divider'>&ndash;</span>
+
+                            <input type="text" name='search-max-price' class='span2 search-price' placeholder="Max. Rent"/>
+                            <button type="submit" class='btn btn-primary search-property'><i class="icon-search icon-white"></i> Search</button>
+                        </form>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</section>
+<!--- END SEARCH BAR ---->
+
+<!---- PREMIUM ITEMS HEADER ----->
+<section class='row featured-items'>
+<div class='span12'>
+    <h5>  <?
+        // get flashdata
+        $success = $this->session->flashdata('success');
+
+        if ($success) {
+            echo ('<div class="alert alert-success">' . '<strong>Thank you</strong> for signing up with Rent Direct, please login to continue where you will be able to access to the user dashboard.' . '</div><br />');
+        }
+        ?></h5>
+
+    <? // contacted us success ?>
+    <h5>
+        <?
+        // get flashdata
+        $success_contacted = $this->session->flashdata('success_contacted');
+
+        if ($success_contacted) {
+            echo '<div class="alert alert-success">' . $success_contacted . '</div><br />';
+        }
+        ?>
+    </h5>
+    <h5>
+        <?
+        // get flashdata
+        $login_error = $this->session->flashdata('message');
+
+        if ($login_error) {
+            echo '<div class="alert alert-success">' . $login_error. '</div><br />';
+        }
+        ?>
+    </h5>
+
+
+<h2>Premium Properties</h2>
+<div class='controls'>
+    <a href="#" class='prev'>Previous</a>
+    <a href="#" class='next'>Next</a>
+</div>
+<!---- END ----------------------->
+
+<!----PREMIUM SLIDER ------------->
+<div class='featured-items-slider'>
+<ul class='slides'>
+
+
+    <!---- NEXT ROW ----->
+
+        <?
+//       set limiter
+        $count = 0;
+
+        foreach ($premium_properties as $key => $value) {
+
+            switch ($value['rent_type']) {
+                case 1:
+                    $rent_type = "/per month";
+                    break;
+                case 2:
+                    $rent_type = "/per week";
+                    break;
+                case 3:
+                    $rent_type = "/per night";
+                    break;
+                case 4:
+                    $rent_type = "/per person";
+                    break;
+            }
+            switch ($value['pets_allowed']) {
+                case 0:
+                    $pets = "No Pets";
+                    break;
+                case 1:
+                    $pets = "Pets";
+                    break;
+            }
+            switch ($value['country']) {
+
+                case 1:
+                    $country = "England";
+                    break;
+                case 2:
+                    $country = "Scotland";
+                    break;
+                case 3:
+                    $country = "Wales";
+                    break;
+                case 4:
+                    $country = "Northen Ireland";
+                    break;
+                case 5:
+                    $country = "Isle of Man";
+                    break;
+            }
+            switch ($value['sub_type_id']) {
+
+                case 1:
+                    $prop_type = "Semi-Detached";
+                    break;
+                case 2:
+                    $prop_type = "Detached";
+                    break;
+                case 3:
+                    $prop_type = "Flat";
+                    break;
+                case 4:
+                    $prop_type = "Maisonette";
+                    break;
+                case 5:
+                    $prop_type = "Bungalow";
+                    break;
+                case 6:
+                    $prop_type = "Apartment";
+                    break;
+            }
+            switch ($value['has_parking']) {
+                case 0:
+                    $parking = "";
+                    break;
+                case 1:
+                    $parking = '+ <i class="fa fa-car"></i>';
+                    break;
+            }
+
+            if ($count == 0) { echo "<li><div class='row'>"; }
+
+            echo "<div class='span3 featured-item-wrapper'>
+            <div class='featured-item'>
+            <div class='top'>
+                <div class='inner-border'>
+                        <div class='inner-padding'>
+                                <figure>"; //end of echo
+            echo ('<img src="' . base_url() . 'prop_images/' . $value['main_image'] . '" alt="" />');
+            echo (' <div class="banner">' . $pets . '</div>" ');
+            echo('<a href="' . site_url('property/view/' . $value['slug']) .  'class="figure-hover">Zoom</a>');
+            echo "</figure>";
+            echo ('<h3><a href="' . site_url('property/view/' . $value['slug']) . '">' . $value['bedrooms'] . ' bed ' . $prop_type . '</a></h3>');
+            echo ('<p>' . $value['city'] . '</p>');
+            echo "</div>";
+            echo "</div>";
+            echo "<i class='bubble'></i>";
+            echo "</div>";
+            echo "<div class='bottom'>
+                    <div class='inner-border'>
+                        <div class='inner-padding'>";
+            echo ('<p>'. $value['bedrooms'] . ' <i class="fa fa-bed"></i> ' . ' + ' . $value['bathrooms'] . ' <i class="fa fa-tint"></i> ' . $parking . '</p>');
+            echo "</div>";
+            echo "</div>";
+            echo "</div>";
+            echo "</div>";
+            echo "<div class='price-wrapper'>";
+            echo ('<div class="price">' . '£' . (int)$value['rent'] . '&nbsp;' . '</div>');
+            echo ('<div class="rate">' . $rent_type . '</div>');
+            echo "</div>";
+            echo "</div>";
+
+
+            // Page count limiter
+            if ($count == 4) {
+               // echo ($count);
+                echo ('</div></li>');
+                $count = 0;
+                //continue;
+            } else {
+                $count++;
+            }
+
+
+        } ?>
+
+<!--- End of Tab limiter and sections for premium ---->
+
+</ul>
+</div>
+</div>
+
+
+<i class='content-bubble'></i>
+</section>
+</section>
+</section>
+<footer>
+    <section class='container'>
+        <section class='row'>
+            <div class='span4 footer-widget'>
+                <h2>About Us</h2>
+                <p>DB CALL</p>
+                <p>DB CALL</p>
+                <a href="#" class='read-more'>Learn More</a>
+            </div>
+            <div class='span4 footer-widget'>
+                <h2>Our Blog</h2>
+                <div class='blog-style'>
+                    <article>
+                        <div class='date-box'>
+                            <div class='day'>20</div>
+                            <div class='month'>jan</div>
+                        </div>
+                        <div class='text-box'>
+                            <h3><a href="post.html">How to Choose Property</a></h3>
+                            <span class='author'>posted by admin</span>
+                            <div class='excerpt'>
+                                <p>TODO: HOST FROM ADMIN BACKEND, IF NOT, THEN JAMES HARDCODE FROM SKYPE</p>
+                            </div>
+                        </div>
+                    </article>
+                    <article>
+                        <div class='date-box'>
+                            <div class='day'>15</div>
+                            <div class='month'>jan</div>
+                        </div>
+                        <div class='text-box'>
+                            <h3><a href="post.html">Real Estate of Future</a></h3>
+                            <span class='author'>posted by SEO</span>
+                            <div class='excerpt'>
+                                <p>TODO: HOST FROM SEO BACKEND, IF NOT, THEN JAMES HARDCODE FROM SKYPE</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class='span4 footer-widget'>
+                <h2>Testimonials</h2>
+                <div class='testimonial-box'>
+                    <div class='controls'>
+                        <a href="#" class='prev'>Previous</a>
+                        <a href="#" class='next'>Next</a>
+                    </div>
+                    <ul class='slides'>
+                        <li>
+                            <div class='slide-box'>
+                                <div class='text-box'>
+                                    <div class='inner'>
+                                        <p>TODO:"I advertised my lodge here, its great!"</p>
+                                    </div>
+                                    <i class='bubble'></i>
+                                </div>
+                                <div class='author-box'>
+                                    <figure></figure>
+                                    <div class='texts'>
+                                        <span class='name'>Jamie Macather</span> <br />
+                                        <span class='position'>Freemason</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class='slide-box'>
+                                <div class='text-box'>
+                                    <div class='inner'>
+                                        <p>--TODO:Apply Backend TXT or Just add txt here--</p>
+                                    </div>
+                                    <i class='bubble'></i>
+                                </div>
+                                <div class='author-box'>
+                                    <figure></figure>
+                                    <div class='texts'>
+                                        <span class='name'>John Macauther</span> <br />
+                                        <span class='position'>Llandric</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>

@@ -1,0 +1,48 @@
+if ($this->input->post('view_mon') == 1){
+            $post_data['view_mon'] == 1;
+        }
+        else {
+            $post_data['view_mon'] == 0;
+        }
+
+        if ($this->input->post('view_tues') == 1) {
+            $post_data['view_tues'] == 1;
+        }
+        else {
+            $post_data['view_tues'] == 0;
+        }
+
+        if ($this->input->post('view_wed') == 1) {
+            $post_data['view_wed'] == 1;
+        }
+        else{
+            $post_data['view_wed'] == 0;
+        }
+
+        if ($this->input->post('view_thurs') == 1){
+            $post_data['view_thurs'] == 1;
+        }
+        else {
+        $post_data['view_thurs'] == 0;
+        }
+
+        if ($this->input->post('view_fri') == 1) {
+            $post_data['view_fri'] == 1;
+        }
+        else {
+            $post_data['view_fri'] == 0;
+        }
+
+        if ($this->input->post('view_sat') == 1){
+            $post_data['view_sat'] == 1;
+        }
+        else {
+            $post_data['view_sat'] == 0;
+        }
+
+        if ($this->input->post('view_sun') == 1){
+            $post_data['view_sun'] == 1;
+        }
+        else {
+            $post_data['view_sun'] == 0;
+        }

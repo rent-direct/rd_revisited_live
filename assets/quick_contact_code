@@ -1,0 +1,38 @@
+<script>
+    $(document).ready(function() {
+
+        $('a#submit_message').click(function () {
+            var name = $("input[name='name']").val();
+            var email = $("input[name='email']").val();
+            var phone = $("input[name='phone']").val();
+            var body = $("input[name='body']").val();
+            var prop_id = $("input[name='prop_id']").val();
+            var landlord_id = $("input[name='landlord_id']").val();
+            var tenant_id = $("input[name='tenant_id']").val();
+
+            if (body == "")
+            {
+                return false;
+            }
+
+            $.post(base_url + "ajax/quick_contact", {
+                name : name,
+                email : email,
+                phone : phone,
+                body : body,
+                prop_id : prop_id,
+                landlord_id : landlord_id,
+                tenant_id : tenant_id } , function(data) {
+
+                alert(data);
+
+            }, "json");
+
+            return false; // good way of stopping it move to the anchor link
+
+        });
+    });
+
+    var base_url = "<?= base_url();  ?>";
+
+</script>

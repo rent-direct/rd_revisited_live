@@ -1,0 +1,90 @@
+.easyWizardSteps {
+    list-style: none;
+    width: 100%;
+    overflow: hidden;
+    margin: 0px;
+    padding: -50;
+    border-bottom: 2px solid #09108a;
+    margin-bottom: 20px;
+    text-align: center;
+
+}
+
+.easyWizardSteps li {
+    font-size: 16px;
+    display: inline-block;
+    padding: 10px;
+    color: #B0B1B3;
+    margin-right: 20px;
+
+    font-family: Ubuntu, Arial;
+}
+
+.easyWizardSteps li span {
+    font-size: 16px
+}
+
+.easyWizardSteps li.current {
+    color: #000
+}
+
+.easyWizardButtons {
+    overflow: hidden;
+    padding: 10px;
+    vertical-align: bottom;
+    position: absolute;
+    top: 200px; left:253px;
+}
+
+.easyWizardButtons button, .easyWizardButtons .submit {
+    cursor: pointer
+}
+
+.easyWizardButtons .prev {
+    float: left
+}
+
+.easyWizardButtons .next, .easyWizardButtons .submit {
+    float: right
+}
+
+.inputwiz {
+    /*border-style: solid;*/
+    border-width: 3px;
+    border-radius: 4px;
+    box-shadow: inset 0px 1px 6px 0px rgba(42, 42, 42, .62);
+    /*font-style: none;*/
+    text-align: center;
+    border-color: #09108a;
+    /*padding: 3px;*/
+    /*font-size: 14px;*/
+    font-family: Ubuntu, Arial;
+
+    padding: 7px;
+    border: solid 1px #09108a;
+    transition: box-shadow 0.3s, border 0.3s;
+}
+
+.inputwizpost {
+    /*border-style: solid;*/
+    border-width: 3px;
+    border-radius: 4px;
+    box-shadow: inset 0px 1px 6px 0px rgba(42, 42, 42, .62);
+    /*font-style: none;*/
+    text-align: center;
+    border-color: #09108a;
+    /*padding: 3px;*/
+    /*font-size: 14px;*/
+    font-family: Ubuntu, Arial;
+
+    padding: 7px;
+    border: solid 1px #09108a;
+    transition: box-shadow 0.3s, border 0.3s;
+}
+
+
+.centerForm {
+    text-align: center;
+
+}
+
